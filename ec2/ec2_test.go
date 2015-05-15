@@ -3,10 +3,10 @@ package ec2_test
 import (
 	"testing"
 
+	. "github.com/motain/gocheck"
 	"github.com/realestate-com-au/goamz/aws"
 	"github.com/realestate-com-au/goamz/ec2"
 	"github.com/realestate-com-au/goamz/testutil"
-	. "github.com/motain/gocheck"
 )
 
 func Test(t *testing.T) {
@@ -114,7 +114,7 @@ func (s *S) TestRequestSpotInstancesErrorWithoutXML(c *C) {
 	testServer.WaitRequest()
 
 	c.Assert(resp, IsNil)
-	c.Assert(err, ErrorMatches, "")
+	c.Assert(err, ErrorMatches, "EOF")
 
 	ec2err, ok := err.(*ec2.Error)
 	c.Assert(ok, Equals, true)

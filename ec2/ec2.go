@@ -169,8 +169,6 @@ func multimap(p map[string]string) url.Values {
 }
 
 func buildError(r *http.Response) error {
-	errors := xmlErrors{}
-	xml.NewDecoder(r.Body).Decode(&errors)
 	var err Error
 	if r.Body != nil {
 		errors := xmlErrors{}
